@@ -1,0 +1,28 @@
+# gcp-sla-monitor configuration
+# Copy to config.yaml and edit values for your project.
+#
+# Each entry under `resources` is one thing to monitor. The probe dispatches
+# each by `type` to the appropriate handler. To add a new resource, add an
+# entry — no code changes needed.
+
+project_id: YOUR_PROJECT_ID_HERE
+
+defaults:
+  window_minutes: 60          # how far back the probe looks on each run
+
+resources:
+  # Cloud Run service example
+  - name: hello-stable        # the Cloud Run service name
+    type: cloud_run
+    location: us-central1
+    sla_target: 99.95         # 99.95% for non-GPU services in standard regions
+    breach_threshold: 99.0    # below this uptime % = BREACHED (else AT_RISK if < sla_target)
+    min_requests_per_min: 100 # SLA's volume floor: error rate only counts at >= 100 req/min
+    error_threshold_pct: 1.0  # > this % errors in a minute = downtime minute
+
+  # Cloud Storage bucket example
+  - name: YOUR_BUCKET_NAME    # the bucket name (without the gs:// prefix)
+    type: cloud_storage
+    location: us-central1
+    sla_target: 99.9          # 99.9% for Standard storage in a regional location
+    breach_threshold: 99.0
