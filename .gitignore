@@ -1,0 +1,29 @@
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+.pytest_cache/
+
+# Real config (project-specific, not committed)
+config.yaml
+
+# Generated reports
+reports/
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# GCP credentials (should never be checked in)
+*-key.json
+service-account*.json
