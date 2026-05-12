@@ -161,6 +161,7 @@ python probe.py --report
 
 You should see the same kind of output shown at the top of this README, plus
 a generated HTML file at `reports/latest.html`. Open it in any browser.
+<img width="1149" height="793" alt="image" src="https://github.com/user-attachments/assets/478a27c9-9f37-4b34-90c3-7291b86b6469" />
 
 ### 10. Sanity-check the math (optional but recommended)
 
